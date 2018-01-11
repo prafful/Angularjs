@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myController">
+ 
+<p>Two way data bindin in Angular 1:</p>
+<p>Name : <input type="text" ng-model="value" placeholder="Enter name here"></p>
+<h1>Hello {{value}}</h1>
+<h3> {{ message}}</h3>
+<input type="button" value="Pass" ng-click="passMe()"/> 
+
+</div>
+
+<script>
+	var app = angular.module("myApp", []);
+    app.controller("myController", myFunction);
+    
+    function myFunction($scope){
+    
+    	$scope.value = "Prafful 4";
+        $scope.message = "Angular 1.x is easy!"
+    	
+        $scope.passMe = function(){
+        
+        	alert("Value: " + $scope.value);
+        }
+        
+    }
+
+</script>
+
+</body>
+</html>
