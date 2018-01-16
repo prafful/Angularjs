@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angualr 1.x Beginner Day 3</title>
+    <script src="angular.js"></script>
+</head>
+<body>
+
+    <div ng-app="myApp" ng-controller="myController">
+        <input type="text" placeholder="Input name" ng-model="myname">
+        <br>
+        <h1>{{ myname}}</h1> 
+        <input type="button" value="Check Value" ng-click="checkName()">
+        <br>
+        <ul >
+            <li ng-repeat="friend in friends" ng-click="callMyName($index)">
+                {{$index}}. {{friend | lowercase }}</li>
+            
+        </ul>
+
+
+
+    </div>
+
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myController", myControllerImplementation);
+
+        function myControllerImplementation($scope){
+                //variables
+                //functions
+                $scope.friends = ['Ida', 'Anita', 'Vijay','Prabhakaran', 'Amlan', 'Ujval', 'Madhav', 'manavi', 'indrajit','ram' , 'prafful'];
+                $scope.myname = "pradeep";
+
+                $scope.checkName = function(){
+                    console.log($scope.myname);
+                }
+
+                $scope.callMyName = function(number){
+                    console.log("Name: " + $scope.friends[number] );
+                }
+        }
+    </script>
+    
+</body>
+</html>

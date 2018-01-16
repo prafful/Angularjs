@@ -3,46 +3,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Angualr 1.x Beginner</title>
-    <script src="angular.js"></script>
+    <title>AngularJS Sample Code</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
 </head>
 <body>
-
-    <h1>Learning Angular JS</h1>
-    <div ng-app="myApp" ng-controller="myController">
-        <input type="text" placeholder="Input name" ng-model="myname">
+    <h3>AngularJS Code Sample 01</h3>
+     
+    <div ng-app="mainApp1" ng-controller="myController">        
+        Name: <input type="text" name="" id="" ng-model="myname" > <br>
+        Location: <input type="text" name="" id="" ng-model="location" > <br>
+        <button ng-click="updateMe()">Click</button>
         <br>
-        <h1>{{ myname}}</h1> 
-        <input type="button" value="Check Value" ng-click="checkName()">
-        <br>
-        <ul >
-            <li ng-repeat="friend in friends" ng-click="callMyName($index)">{{$index}}. {{friend}}</li>
-            
+        {{ myname }} is at {{location}} <br>
+        Friends: {{ friends}}
+        Add Friend: <input type="text" name="" id="" ng-model="addMe"> 
+        <button ng-click="addFriend()">Add</button>
+        <ul>
+            <li ng-repeat="f in friends" >
+                {{ $index+1 }}. {{f  | uppercase }} 
+                <button ng-click="editMe($index)">Edit</button>
+                <button ng-click="angryMe($index)">Delete</button>
+            </li>
+           
         </ul>
-
-
 
     </div>
 
-    <script>
-        var app = angular.module("myApp", []);
-        app.controller("myController", myControllerImplementation);
-
-        function myControllerImplementation($scope){
-                //variables
-                //functions
-                $scope.friends = ['ida', 'anita', 'vijay','prabhakaran', 'amlan', 'ujval', 'madhav', 'manavi', 'indrajit','ram' , 'prafful'];
-                $scope.myname = "pradeep";
-
-                $scope.checkName = function(){
-                    console.log($scope.myname);
-                }
-
-                $scope.callMyName = function(number){
-                    console.log("Name: " + $scope.friends[number] );
-                }
-        }
-    </script>
     
+    
+    <div id='two'>
+        Another {{myname}}
+    </div>
+   
+        <script src="angularcode.js"></script>
 </body>
 </html>
