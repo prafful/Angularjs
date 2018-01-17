@@ -15,7 +15,7 @@
         <button ng-click="updateMe()">Click</button>
         <br>
         {{ myname }} is at {{location}} <br>
-        Friends: {{ friends}}
+        Friends: {{ friends}} <br>
         Add Friend: <input type="text" name="" id="" ng-model="addMe"> 
         <button ng-click="addFriend()">Add</button>
         <ul>
@@ -25,16 +25,36 @@
                 <button ng-click="angryMe($index)">Delete</button>
             </li>
            
-        </ul>
+        </ul><br>
+        Search: <input type="text" name="" id="" ng-model="searchName.name">
+       <table border="1" width="600px">
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+                <th>DOB</th>
+                <th>Earning</th>
+            </tr>
+            <tr ng-repeat="jf in friends_json | orderBy:'name' | filter:searchName">
+                <td>{{jf.name | uppercase }}</td>
+                <td ng-if="show_score">{{jf.score}}</td>
+                <td>{{jf.earning | currency:'INR'}}</td>
+                <td>{{jf.dob  }}</td>
+            </tr>
 
-    </div>
+       </table>
+       <br>
+        Another Date: {{date_sample | date:'fullDate' | uppercase}}
+       <hr>
+       <h3>Custom Directive</h3><br>
+       
+       <money-ul>
+           
+       </money-ul>
 
-    
-    
-    <div id='two'>
-        Another {{myname}}
+
     </div>
    
         <script src="angularcode.js"></script>
 </body>
 </html>
+
