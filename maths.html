@@ -12,9 +12,16 @@
     + 
     <input type="number" name="" ng-model="number2"> <br>
     <input type="button" value="Add" ng-click="addNumberForm()">
-    <input type="button" value="Multiply" ng-click="multiplyNumberForm()"><br>
-        Addition: {{ totalAdd }}<br>
+    <input type="button" value="Multiply" ng-click="multiplyNumberForm()">
+    <input type="button" value="Remote Data" ng-click="getRemoteData()"><br>
+    
+    Addition: {{ totalAdd }}<br>
         Multiplication {{ totalMultiply}}
+        <hr>
+    
+      <!--   <ul>
+            <li ng-repeat="d in remoteData">d.id</li>
+        </ul> -->
     <script src="angular_service_factory.js"></script>
 </body>
 </html>
