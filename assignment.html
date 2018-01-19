@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Angular JS Code</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"> </script>
+    <style>
+        .completed-true {
+            text-decoration: line-through;
+            color: grey;
+        }
+    </style>
+</head>
+<body >    
+     <div ng-app="myApp">
+            <h2>To Do List</h2>
+            <div ng-controller="x">
+                <span>{{pending()}} of {{schedule.length}} pending</span>
+                <ul>
+                    <li ng-repeat="todo in schedule">
+                        <span class="completed-{{todo.completed}}">{{todo.work}}</span>
+                        <input type="button" id="btnDone" value="Done" ng-click="Done($index)" ng-disabled=todo.completed>
+                        <input type="button" id="btnEdit" value="Edit" ng-click="Edit($index)" ng-disabled=todo.completed>                                          
+                    </li>
+                </ul>                
+                <input type="text" ng-model="todoWork" size="30" placeholder="add new work here">
+                <input class="btn-primary" type="button" ng-click="addNew()" value="add">
+                 <div ng-if ="isedit">
+                    <input type="text" ng-model ="edittest" ng-change="change_update()" size="30"> 
+                    <input class="btn-primary" type="button" ng-click="change(edittest)" value="Update">
+                </div>
+            </div>
+        </div>
+         <script>
+            var app = angular.module("myApp", []);
+            app.controller("x", myControllerImplementation);          
+            
+            function myControllerImplementation($scope) {
+                $scope.newedittest ='';
+
+                $scope.schedule = [
+                { work: 'Wash the Car', completed: true , isEdit : false },
+                { work: 'Meet Ajay', completed: false ,  isEdit : false }];               
+
+                $scope.addNew = function () {
+                    $scope.schedule.push({ work: $scope.todoWork, completed: false ,isEdit : false });
+                    $scope.todoWork = '';
+                };
+
+                 $scope.Done = function (index) {                   
+                    $scope.schedule[index].completed = true;
+                    $scope.schedule[index].isEdit = false;
+                };
+                 $scope.Edit = function (index) {                   
+                    $scope.isedit = true;
+                    $scope.indexvalue = index;
+                    $scope.edittest = $scope.schedule[index].work;      
+                    console.log("From edit: " + $scope.edittest);             
+                };
+                 $scope.change = function (newvalue) { 
+                    //$scope.newedittest = $scope.edittest;
+                    console.log("From update: " +newvalue);                           
+                    //$scope.schedule[$scope.indexvalue].work = $scope.newedittest;                    
+                };
+                $scope.change_update = function () { 
+                    $scope.newedittest = $scope.edittest;
+                    console.log("From change_update: " +$scope.newedittest);                           
+                    //$scope.schedule[$scope.indexvalue].work = $scope.newedittest;                    
+                };
+                $scope.pending = function () {
+                    var count = 0;
+                    angular.forEach($scope.schedule, function (todo) {
+                        count += todo.completed ? 0 : 1;
+                    });
+                    return count;
+                };
+            }
+    </script>
+</body>
+</html>​
