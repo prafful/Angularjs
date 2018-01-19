@@ -14,9 +14,11 @@ function additionServiceFunction($http){
     
     addition.getRemoteData = function(){
         console.log("Inside get remote data")
-        $http({
+
+        var remoteData = $http({
             method:"GET", 
-            url:"https://jsonplaceholder.typicode.com/users"
+            url:"https://jsonplaceholder.typicode.com/users",
+            async:false
         }).then(onSuccess, onFailure);
         function onSuccess(response){
             console.log("success..." + response.data);
@@ -26,6 +28,7 @@ function additionServiceFunction($http){
             console.log("failure..." + error.statusText);
             return error.statusText;
         }
+        return remoteData;
     }
     console.log("returning..." + addition);
     return addition;
@@ -35,7 +38,7 @@ function additionServiceFunction($http){
 app.controller("happy", additionController);
 
 function additionController($scope, additionService, $http){
-    $scope.remoteData = {};
+    $scope.remoteData = null;
 
     $scope.addNumberForm = function(){
         $scope.totalAdd = additionService.addNumber($scope.number1, $scope.number2);
@@ -45,7 +48,14 @@ function additionController($scope, additionService, $http){
     }
 
     $scope.getRemoteData = function(){
-        $scope.remoteData = JSON.stringify(additionService.getRemoteData());
-        console.log("in controller..." + $scope.remoteData);
+        /* additionService.getRemoteData().then(function(response){
+            $scope.remoteData = response;
+        }); */
+      additionService.getRemoteData().then(function(data){
+        $scope.remoteData = data;
+        console.log("i am something..." + $scope.remoteData);
+    });
+       
+        console.log("who am i..." + $scope.remoteData);
     }
 }

@@ -18,10 +18,11 @@
     Addition: {{ totalAdd }}<br>
         Multiplication {{ totalMultiply}}
         <hr>
-    
-      <!--   <ul>
-            <li ng-repeat="d in remoteData">d.id</li>
-        </ul> -->
+    Remote:
+    <input type="text" name="" ng-model="search" placeholder="search..."> <br>
+        <ul>
+            <li ng-repeat="d in remoteData | filter:search">{{d.id}}, {{d.name }}</li>
+        </ul>
     <script src="angular_service_factory.js"></script>
 </body>
 </html>
