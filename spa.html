@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SPA</title>
+    <script src="angular.js"> </script>
+    <script src="angular-route.js"></script>
+</head>
+<body ng-app="routeApp">
+    <a href="#!one">One</a>
+    <a href="#!two">Two</a>
+    <a href="#!three">Three</a>
+
+ <div ng-view>I will be replaced</div> 
+<script>
+var app = angular.module("routeApp", ["ngRoute"]);
+app.config(myRouteConfig);
+function myRouteConfig($routeProvider){
+    $routeProvider.when("/", {templateUrl:"spa.html"})
+                    .when("/one", {templateUrl:"one.html"})
+                    .when("/two",{templateUrl:"two.html"})
+                    .when("/three", {templateUrl:"three.html"})
+}
+</script>
+</body>
+</html>
