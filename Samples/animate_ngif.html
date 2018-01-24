@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+
+<link rel="stylesheet" href="style.css">
+<body ng-app="app">
+    <button ng-click="showRed=true">Show Red Bars</button>
+    <button ng-click="showRed=false">Hide Red Bars</button>
+    <p ng-if="showRed" class="red-bar"> I am gone</p>
+    <p> I am here</p>
+    <p ng-if="showRed" class="red-bar"> I am gone</p>
+    <p> I am here</p>
+    <p ng-if="showRed" class="red-bar"> I am gone</p>
+    <p> I am here</p>
+    <p ng-if="showRed" class="red-bar"> I am gone</p>
+    <p> I am here</p>
+    <script>
+        angular.module('app', ['ngAnimate']);
+    </script>
+  </body>
+</html>

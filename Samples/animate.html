@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<style>
+div {
+  transition: all linear 4s;
+  background-color: green;
+  height: 100px;
+  width: 100px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.ng-hide {
+  height: 0;
+  width: 0;
+  background-color: transparent;
+  top:0px;
+  left: 200px;
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+
+<body ng-app="ngAnimate">
+
+<h1>Hide the DIV: <input type="checkbox" ng-model="myCheck"></h1>
+{{ myCheck }}
+<div ng-hide="myCheck">I will be hidden</div>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+var ctsOrderApp = angular.module("ctsCafetariaAngularApp",[]);
